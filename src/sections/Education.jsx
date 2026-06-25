@@ -5,27 +5,27 @@ import { GraduationCap, Calendar } from 'lucide-react';
 const educationData = [
   {
     type: 'University',
-    institution: 'YOUR_UNIVERSITY_NAME',
-    degree: 'Bachelor of Science in Computer Science & Engineering',
-    duration: '2022 - 2026 (Expected)',
-    cgpa: '3.85 / 4.00',
-    field: 'Computer Science',
-    description: 'Focused on Software Engineering, Web Development, Databases, Distributed Systems, Data Structures, and Algorithm Design.'
+    institution: 'Eden Women College, Dhaka, Bangladesh',
+    degree: 'BBA in Accounting and Information Systems',
+    duration: '2023 - 2027 (Expected)',
+    cgpa: '3.72 / 4.00',
+    field: 'Business Administration',
+    description: 'Alongside my BBA studies, I have developed a strong passion for web development. I specialize in building responsive, modern, and user-friendly web applications using HTML, CSS, JavaScript, React, Tailwind CSS, and other front-end technologies while continuously expanding my full-stack development skills.'
   },
   {
     type: 'College',
-    institution: 'YOUR_COLLEGE_NAME',
+    institution: 'Dr. Mahbubur Rahman College, Dhaka, Bangladesh',
     degree: 'Higher Secondary Certificate (HSC)',
-    duration: '2020 - 2022',
+    duration: '2020 - 2021',
     cgpa: '5.00 / 5.00',
     field: 'Science Group',
     description: 'Majored in Mathematics, Physics, Chemistry, and Information & Communication Technology (ICT) with distinction.'
   },
   {
     type: 'School',
-    institution: 'YOUR_SCHOOL_NAME',
+    institution: 'Shabuj Bidyapith Hight School and College, Dhaka, Bangladesh',
     degree: 'Secondary School Certificate (SSC)',
-    duration: '2018 - 2020',
+    duration: '2019 - 2020',
     cgpa: '5.00 / 5.00',
     field: 'Science Group',
     description: 'Acquired foundational education with secondary science majors and initial computer applications.'
