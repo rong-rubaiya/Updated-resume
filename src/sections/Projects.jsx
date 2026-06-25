@@ -1,87 +1,440 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, ArrowRight, ArrowLeft, X, Code, Sparkles, AlertCircle, TrendingUp } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 
 const projectsData = [
+ {
+  title: 'Nova Pay - Modern Fintech Platform',
+  description:
+    'A full-stack fintech platform that provides secure digital wallets, loan management, micro-savings, peer-to-peer payments, bill splitting, subscriptions, and real-time communication with an intuitive analytics dashboard.',
+
+  technologies: [
+    'Next.js',
+    'TypeScript',
+    'Tailwind CSS',
+    'MongoDB',
+    'Mongoose',
+    'NextAuth.js',
+    'JWT',
+    'Pusher',
+    'Cloudinary',
+    'Groq AI',
+    'Framer Motion',
+    'Chart.js'
+  ],
+
+  features: [
+    'Secure Authentication & KYC Verification',
+    'Digital Wallet & Balance Management',
+    'Loan Application & Repayment Tracking',
+    'Micro-Savings Plans',
+    'Peer-to-Peer Money Transfers',
+    'Bill Splitting & Shared Payments',
+    'Real-Time Chat & Notifications',
+    'Admin Dashboard with User Management',
+    'Financial Analytics & Reports',
+    'Multi-Language & Dark/Light Theme'
+  ],
+
+  problem:
+    'Traditional financial applications often separate wallets, loans, savings, and communication into different systems, creating a fragmented user experience with slow support and limited financial insights.',
+
+  solution:
+    'Developed an all-in-one fintech platform using Next.js App Router and MongoDB that combines digital banking, lending, savings, real-time messaging, and analytics into a single secure ecosystem. Implemented JWT authentication, NextAuth, Pusher-powered live updates, AI assistance, and optimized database queries for fast performance.',
+
+  challenges:
+    'Managing secure financial transactions, synchronizing real-time wallet balances across users, implementing role-based access control, handling concurrent transactions, integrating third-party services, and maintaining responsive performance while supporting real-time messaging and analytics.',
+
+  future:
+    'Planned enhancements include biometric authentication, virtual and physical debit cards, cryptocurrency wallet integration, investment portfolios, AI-powered financial recommendations, Open Banking APIs, advanced fraud detection, and international multi-currency payment support.',
+
+  github: 'https://github.com/AlFahad47/Novapay',
+
+  live: 'https://novapay-ten.vercel.app',
+
+  image: '/NOVAPAY.png',
+  imageText: 'NOVA PAY'
+},
   {
-    title: 'E-Commerce System (MERN)',
-    description: 'A full-featured e-commerce ecosystem with dashboard analysis, payments, and product variations.',
-    technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Redux', 'Tailwind CSS'],
-    features: ['Redux State Management', 'Stripe Payment Integration', 'Interactive Charts Dashboard', 'Dynamic Filtering & Sorting'],
-    problem: 'Traditional e-commerce platforms struggle with heavy state changes and slow loading on search result pages.',
-    solution: 'Implemented client-side Redux caching alongside MongoDB aggregation pipelines to lower database load and fetch instantly.',
-    challenges: 'Synching state between complex local storage carts and server database tables during guest checkouts.',
-    future: 'Integrating a recommendation model using vector searches for product suggestions.',
-    github: 'https://github.com/placeholder',
-    live: 'https://example.com',
-    imageText: 'E-COMMERCE SYSTEM'
+  title: 'Ticket Kati - Online Ticket Booking Platform',
+
+  description:
+    'A modern full-stack event ticket booking platform that enables users to discover events, reserve seats, and purchase tickets securely through an intuitive and responsive interface.',
+
+  technologies: [
+    'HTML5',
+    'CSS3',
+    'Tailwind CSS',
+    'JavaScript',
+    'Node.js',
+    'Express.js',
+    'MongoDB',
+    'JWT',
+    'Stripe'
+  ],
+
+  features: [
+    'Secure User Authentication',
+    'Browse & Search Upcoming Events',
+    'Event Details & Ticket Availability',
+    'Online Ticket Booking',
+    'Stripe Payment Integration',
+    'Booking History',
+    'Responsive Mobile-Friendly Design',
+    'Admin Event Management',
+    'JWT Protected Routes',
+    'Real-Time Seat Availability'
+  ],
+
+  problem:
+    'Traditional ticket booking systems often involve complicated navigation, limited payment options, and poor mobile responsiveness, making the ticket purchasing experience slow and inconvenient for users.',
+
+  solution:
+    'Built a modern ticket booking platform with a responsive UI, JWT-based authentication, and Stripe payment integration. The platform allows users to discover events, book tickets securely, and manage their bookings while providing administrators with efficient event and ticket management tools.',
+
+  challenges:
+    'Implementing secure authentication, preventing duplicate ticket purchases, managing ticket availability in real time, integrating Stripe payment processing, and ensuring a smooth user experience across all devices.',
+
+  future:
+    'Future improvements include QR code-based e-tickets, real-time seat selection, event organizer dashboards, email and SMS ticket delivery, event recommendations powered by AI, refund management, and support for multiple payment gateways.',
+
+  github: 'https://github.com/rong-rubaiya/TicketKati',
+
+  live: 'https://demoticketkatiproject.vercel.app/',
+    image: '/ticketkati.png',
+  imageText: 'TICKET KATI'
+},
+  
+   {
+  title: 'Meal-Mate - Food Ordering Platform',
+
+  description:
+    'A modern full-stack meal ordering platform that allows users to discover, search, and order delicious meals through a fast, responsive, and visually engaging interface. Designed to provide a seamless food browsing experience with secure authentication and smooth animations.',
+
+  technologies: [
+    'Next.js',
+    'React.js',
+    'Tailwind CSS',
+    'Framer Motion',
+    'Firebase',
+    'NextAuth.js',
+    'Node.js',
+    'Express.js',
+    'MongoDB',
+    'REST API'
+  ],
+
+  features: [
+    'Secure Authentication (Email & Google)',
+    'Browse Top-Rated Meals',
+    'Advanced Search & Filtering',
+    'Online Meal Ordering',
+    'Responsive Mobile-First Design',
+    'Smooth Framer Motion Animations',
+    'REST API Integration',
+    'Protected User Routes',
+    'Fast Next.js Performance',
+    'Interactive User Experience'
+  ],
+
+  problem:
+    'Many online food ordering platforms suffer from slow performance, poor mobile optimization, and limited meal discovery features, making it difficult for users to quickly find and order their preferred meals.',
+
+  solution:
+    'Developed a modern meal ordering platform using Next.js and React with a responsive UI, secure Firebase and NextAuth authentication, and REST API integration. The application enables users to browse featured meals, search using multiple filters, securely authenticate, and place meal orders through a fast and intuitive interface.',
+
+  challenges:
+    'Implementing secure authentication across multiple providers, managing dynamic filtering with optimized rendering, integrating REST APIs efficiently, maintaining responsive layouts across all screen sizes, and creating smooth page transitions using Framer Motion.',
+
+  future:
+    'Future enhancements include a Cooker Dashboard for meal management, customer reviews and ratings, real-time order notifications, order history, AI-powered meal recommendations, meal analytics, favourite lists, and multi-language support.',
+
+  github: 'https://github.com/rong-rubaiya/meal-mate-client-side',
+
+  live: 'https://meal-mate-client-side.vercel.app/',
+
+  image: '/mealmate.png',
+
+  imageText: 'MEAL MATE'
+
   },
   {
-    title: 'SaaS Task Manager',
-    description: 'Real-time task and kanban dashboard for agile collaboration across teams.',
-    technologies: ['Next.js', 'Tailwind CSS', 'Socket.io', 'MongoDB', 'Framer Motion'],
-    features: ['Drag-and-Drop Kanban Boards', 'Live Chat & Activity Feeds', 'Task Time Tracking Metrics', 'Role-based Team Permissions'],
-    problem: 'Standard task managers do not sync task updates live, causing team overlaps and duplicated tasks.',
-    solution: 'Built a websocket syncing engine using Socket.io that propagates card updates instantly to all board members.',
-    challenges: 'Resolving simultaneous drag-and-drop actions on the same item without database lockouts.',
-    future: 'Add automatic time sheet generation and invoice output based on tracked hours.',
-    github: 'https://github.com/placeholder',
-    live: 'https://example.com',
-    imageText: 'SAAS TASK MANAGER'
-  },
-  {
-    title: 'AI Content Studio',
-    description: 'An interactive content generation platform utilizing LLM APIs.',
-    technologies: ['React', 'Express', 'Tailwind CSS', 'OpenAI API', 'React Markdown'],
-    features: ['Custom Writing Assist Templates', 'Interactive Syntax-Highlight Output', 'One-click Copy & Markdown Export', 'Historical Outputs History'],
-    problem: 'Content creators face writer\'s block and require localized drafting aids that formats code and text.',
-    solution: 'Integrated OpenAI APIs with structured custom system prompts and streamed text responses using server-sent events.',
-    challenges: 'Managing token usages and API rate-limiting rules across concurrent user generation flows.',
-    future: 'Implementing automated SEO check engines for generated copy text.',
-    github: 'https://github.com/placeholder',
-    live: 'https://example.com',
-    imageText: 'AI CONTENT STUDIO'
-  },
-  {
-    title: 'Fintech Portfolio Dashboard',
-    description: 'Real-time cryptocurrency and stock analysis dashboard with simulated trading features.',
-    technologies: ['React', 'Tailwind CSS', 'Recharts', 'CoinGecko API', 'Firebase'],
-    features: ['Live Market Price Websockets', 'Historical Financial Charting', 'Mock Order Book Transactions', 'Secure Wallet Ledger Logging'],
-    problem: 'Aggregating financial charts across diverse crypto and equity API feeds results in slow graph rendering.',
-    solution: 'Utilized stateful API polling with local memory caches and parsed graphs inside specialized React charting libraries.',
-    challenges: 'Keeping live chart intervals accurate without triggering API throttle locks.',
-    future: 'Adding simulated machine learning predictors for currency trends.',
-    github: 'https://github.com/placeholder',
-    live: 'https://example.com',
-    imageText: 'FINTECH DASHBOARD'
-  },
-  {
-    title: 'Dev Hub Social Net',
-    description: 'A localized developer forum and resource sharing network for coding bootcamps.',
-    technologies: ['React', 'NodeJS', 'Express', 'PostgreSQL', 'JWT Authentication'],
-    features: ['Interactive QA Forum Posts', 'Markdown Supported Answers', 'Upvote & Dev Badge System', 'Profile Developer Reputations'],
-    problem: 'Bootcamp students need a focused forum to troubleshoot coding issues without stackoverflow level gatekeeping.',
-    solution: 'Designed a tag-based developer post board using PostgreSQL relational join filters for quick querying.',
-    challenges: 'Sanitizing user inputs to prevent cross-site scripting (XSS) while allowing rich Markdown text blocks.',
-    future: 'Incorporating AI helpers that suggest automated answers to basic errors.',
-    github: 'https://github.com/placeholder',
-    live: 'https://example.com',
-    imageText: 'DEV HUB SOCIAL'
-  },
-  {
-    title: 'Real Estate Portal',
-    description: 'Modern visual estate finder featuring location mapping and direct scheduling agent connects.',
-    technologies: ['React', 'Tailwind CSS', 'Leaflet Maps', 'Firebase', 'EmailJS'],
-    features: ['Leaflet Map Area Pins', 'Radius Filtering Algorithms', 'Visual Photo Carousel Slider', 'Agent Calendar Bookings'],
-    problem: 'Visualizing housing directories on small map interfaces is often slow and lacks intuitive distance boundaries.',
-    solution: 'Built custom Leaflet map anchors that calculate geometric distance circles around targeted coordinates.',
-    challenges: 'Rendering hundreds of map pins efficiently without freezing mobile viewports.',
-    future: 'Adding virtual 3D tour player elements inside details panels.',
-    github: 'https://github.com/placeholder',
-    live: 'https://example.com',
-    imageText: 'REAL ESTATE PORTAL'
-  }
+  title: 'Livento - Property Listing Platform',
+
+  description:
+    'A modern real estate property management platform that allows users to discover, review, and manage property listings through a responsive and user-friendly interface. The platform provides secure authentication, advanced property search, ratings, reviews, and personalized user experiences.',
+
+  technologies: [
+    'React.js',
+    'React Router',
+    'Firebase Authentication',
+    'Firebase Firestore',
+    'Node.js',
+    'Express.js',
+    'MongoDB',
+    'Firebase Admin SDK',
+    'CSS',
+    'SCSS',
+    'SweetAlert'
+  ],
+
+  features: [
+    'Email & Google Authentication',
+    'Protected User Routes',
+    'Add, Update & Delete Properties',
+    'Property Listings & Detailed Views',
+    'Property Ratings & Reviews',
+    'Advanced Property Search',
+    'Sort by Price & Posted Date',
+    'Dark & Light Theme Toggle',
+    'Responsive Design for All Devices',
+    'Custom 404 Error Page'
+  ],
+
+  problem:
+    'Many property listing platforms provide limited personalization, complicated navigation, and lack efficient tools for users to discover, evaluate, and manage real estate properties. Users often struggle to compare listings and share trustworthy feedback.',
+
+  solution:
+    'Developed a full-stack property management platform using React, Firebase, Node.js, and MongoDB that enables users to browse, search, review, and manage properties seamlessly. Secure authentication, protected routes, dynamic property management, and advanced filtering create an efficient and user-friendly real estate experience.',
+
+  challenges:
+    'Implementing secure authentication with multiple providers, managing role-based access to property data, synchronizing property updates across the database, optimizing search and sorting performance, and ensuring a fully responsive experience across various screen sizes.',
+
+  future:
+    'Future enhancements include property wishlists, real-time chat between buyers and agents, AI-powered property recommendations, interactive maps, mortgage calculators, property comparison tools, appointment scheduling, and multi-language support.',
+
+  github: 'https://github.com/rong-rubaiya/livento',
+
+  live: 'https://livento-ass-10.web.app/',
+   image: '/livento.png',
+
+  imageText: 'LIVENTO'
+},
+ {
+  title: 'Skill Swap - Community Learning Platform',
+
+  description:
+    'A modern skill exchange platform that connects people who want to teach and learn from one another. Users can showcase their expertise, discover new skills, communicate with others, and build a collaborative learning community through an intuitive and responsive interface.',
+
+  technologies: [
+    'React.js',
+    'Tailwind CSS',
+    'DaisyUI',
+    'Firebase Authentication',
+    'Firebase Firestore',
+    'Framer Motion',
+    'React Context',
+    'React Icons'
+  ],
+
+  features: [
+    'Secure User Authentication',
+    'Create & Manage Skill Listings',
+    'Browse Community Skills',
+    'Advanced Search & Filtering',
+    'User Profiles',
+    'Skill Exchange Requests',
+    'Community Ratings & Reviews',
+    'Responsive Mobile-First Design',
+    'Smooth Framer Motion Animations',
+    'Real-Time Firebase Database'
+  ],
+
+  problem:
+    'People often struggle to find affordable opportunities to learn new skills or connect with others who are willing to share their expertise. Existing learning platforms primarily focus on paid courses rather than collaborative knowledge exchange.',
+
+  solution:
+    'Developed a community-driven skill exchange platform where users can list their skills, discover other members based on categories and locations, communicate to arrange skill swaps, and build trusted learning relationships through ratings and reviews. Firebase Authentication and Firestore ensure secure access and real-time data synchronization.',
+
+  challenges:
+    'Designing an intuitive skill-matching experience, implementing secure authentication, managing real-time Firestore data, optimizing search and filtering performance, and creating a responsive interface that delivers a seamless experience across all devices.',
+
+  future:
+    'Future enhancements include real-time messaging, video call integration, AI-powered skill recommendations, learning progress tracking, achievement badges, scheduling with calendar integration, multilingual support, and mentor verification.',
+
+  github: 'https://github.com/rong-rubaiya/SkillSwap',
+
+  live: 'https://skillswap-project-12345.web.app/',
+  image: '/skillswap.png',
+
+  imageText: 'SKILL SWAP'
+},
+ {
+  title: 'Stopwatch App',
+
+  description:
+    'A lightweight and responsive stopwatch application built with JavaScript that enables users to accurately track elapsed time with start, stop, and reset functionality through a clean and intuitive user interface.',
+
+  technologies: [
+    'HTML5',
+    'CSS3',
+    'JavaScript'
+  ],
+
+  features: [
+    'Start, Stop & Reset Timer',
+    'Accurate Time Tracking',
+    'Millisecond Precision',
+    'Responsive User Interface',
+    'Minimal & Clean Design',
+    'Lightweight Performance',
+    'Simple User Experience',
+    'Cross-Browser Compatibility'
+  ],
+
+  problem:
+    'Many simple timer applications are cluttered with unnecessary features, making quick and accurate time tracking inconvenient for users who only need a lightweight stopwatch.',
+
+  solution:
+    'Developed a clean JavaScript stopwatch application with precise timing functionality, allowing users to start, pause, resume, and reset the timer instantly. The responsive interface ensures a smooth experience across desktop and mobile devices.',
+
+  challenges:
+    'Maintaining accurate timing despite browser rendering delays, properly managing timer intervals, preventing duplicate interval executions, and ensuring responsive performance across different browsers.',
+
+  future:
+    'Future improvements include lap time recording, countdown timer mode, dark/light theme support, keyboard shortcuts, local storage for saved sessions, sound notifications, and Progressive Web App (PWA) support.',
+
+  github: 'https://github.com/rong-rubaiya/Js-mini-proj-Stop-watch',
+
+  live: 'https://rong-rubaiya.github.io/Js-mini-proj-Stop-watch/',
+  image: '/stopwatch.png',
+
+  imageText: 'STOPWATCH'
+},
+{
+  title: 'Digital Watch',
+
+  description:
+    'A lightweight real-time digital clock built with JavaScript that dynamically displays the current hours, minutes, and seconds through a sleek, responsive, and user-friendly interface.',
+
+  technologies: [
+    'HTML5',
+    'CSS3',
+    'JavaScript'
+  ],
+
+  features: [
+    'Real-Time Clock Updates',
+    'Dynamic Hours, Minutes & Seconds',
+    'Automatic Time Synchronization',
+    'Responsive User Interface',
+    'Minimal & Modern Design',
+    'Lightweight Performance',
+    'Cross-Browser Compatibility',
+    'Easy-to-Use Interface'
+  ],
+
+  problem:
+    'Many online clock applications are overloaded with unnecessary features, making them less suitable for users who simply need a clean and accurate real-time digital clock.',
+
+  solution:
+    'Developed a lightweight digital watch using JavaScript that updates the current time every second without requiring page refreshes. The application delivers accurate time synchronization with a clean, responsive, and visually appealing interface.',
+
+  challenges:
+    'Ensuring precise one-second interval updates, formatting time consistently with leading zeros, optimizing rendering performance, and maintaining compatibility across different browsers and screen sizes.',
+
+  future:
+    'Future enhancements include 12/24-hour format switching, multiple timezone support, customizable themes, date and day display, alarm functionality, stopwatch and countdown timer modes, and Progressive Web App (PWA) support.',
+
+  github: 'https://github.com/rong-rubaiya/Js-mini-proj-Digital-Watch',
+
+  live: 'https://rong-rubaiya.github.io/Js-mini-proj-Digital-Watch/',
+  image: '/digitalwatch.png',
+
+  imageText: 'DIGITAL WATCH'
+},
+{
+  title: 'AppifyZone - Interactive App Store',
+
+  description:
+    'A modern app discovery platform that simulates a real app store experience. Users can explore trending applications, view detailed app information, analyze performance metrics through interactive visualizations, and manage app installations within a responsive and engaging interface.',
+
+  technologies: [
+    'React.js',
+    'React Router',
+    'Tailwind CSS',
+    'JavaScript',
+    'React Toastify',
+    'Recharts',
+    'Local Storage'
+  ],
+
+  features: [
+    'Interactive App Store Simulation',
+    'Install & Uninstall Applications',
+    'Detailed App Information Pages',
+    'Dynamic Rating & Performance Charts',
+    'Smart Download-Based Sorting',
+    'Real-Time Toast Notifications',
+    'Local Storage Persistence',
+    'Responsive Mobile-First Design',
+    'Smooth UI Animations',
+    'Dynamic Download Count Formatting'
+  ],
+
+  problem:
+    'Many app showcase websites present static information without allowing users to interact with applications or explore meaningful insights. This limits user engagement and fails to replicate the experience of a real app marketplace.',
+
+  solution:
+    'Developed an interactive app store platform using React and Tailwind CSS that enables users to browse applications, simulate installations, analyze rating distributions through graphical visualizations, and organize apps using dynamic sorting. Local Storage maintains installation status across sessions, creating a realistic and engaging app management experience.',
+
+  challenges:
+    'Managing application installation states, synchronizing Local Storage with React state, implementing dynamic sorting and filtering, rendering responsive data visualizations, and maintaining smooth performance while handling multiple interactive components.',
+
+  future:
+    'Future enhancements include user authentication, personalized wishlists, app reviews and comments, AI-powered recommendation engine, category-based filtering, dark/light theme switching, cloud synchronization, and backend integration for real-time app data.',
+
+  github: 'https://github.com/rong-rubaiya/AppifyZone',
+
+  live: 'https://appifyzone.netlify.app/',
+  image: '/appifyzone.png',
+  imageText: 'APPIFYZONE'
+},
+{
+  title: 'Emergency Service Directory',
+
+  description:
+    'A responsive emergency service directory designed to provide instant access to essential emergency contact numbers across Bangladesh. The platform centralizes important government and support services, allowing users to quickly locate, view, and copy emergency phone numbers during critical situations.',
+
+  technologies: [
+    'HTML5',
+    'CSS3',
+    'Tailwind CSS',
+    'JavaScript'
+  ],
+
+  features: [
+    'Emergency Contact Directory',
+    'One-Click Number Copy',
+    'Essential Government Services',
+    'Police, Fire & Ambulance Contacts',
+    'Utility & Helpline Information',
+    'Responsive Mobile-First Design',
+    'Clean & User-Friendly Interface',
+    'Fast Contact Accessibility'
+  ],
+
+  problem:
+    'During emergencies, people often struggle to find accurate contact numbers quickly because they are scattered across different websites or unavailable when urgently needed. Delays in accessing emergency services can have serious consequences.',
+
+  solution:
+    'Developed a centralized emergency service directory that provides instant access to verified emergency contact numbers through a simple and intuitive interface. Users can quickly browse essential services and copy phone numbers with a single click, making emergency communication faster and more convenient.',
+
+  challenges:
+    'Designing an interface that prioritizes speed and accessibility, organizing emergency services into a clear structure, ensuring responsive performance across devices, and implementing efficient copy-to-clipboard functionality for a seamless user experience.',
+
+  future:
+    'Future enhancements include one-click calling on supported devices, GPS-based nearby emergency service suggestions, multilingual support, offline accessibility with PWA, hospital and pharmacy location integration, emergency alerts, and favorite contact management.',
+
+  github: 'https://github.com/rong-rubaiya/5th-Assignment-PHero',
+
+  live: 'https://rong-rubaiya.github.io/5th-Assignment-PHero/',
+  image: '/emergency.png',
+
+  imageText: 'EMERGENCY DIRECTORY'
+}
 ];
 
 export default function Projects() {
@@ -95,15 +448,37 @@ export default function Projects() {
   const currentProjects = projectsData.slice(indexOfFirstProject, indexOfLastProject);
   const totalPages = Math.ceil(projectsData.length / projectsPerPage);
 
-  // Disable body scroll when modal is active
+  const scrollYRef = useRef(0);
+
+  // Disable body/html scroll when modal is active and restore scroll position
   useEffect(() => {
-    if (selectedProject) {
+    if (selectedProject && typeof window !== 'undefined') {
+      scrollYRef.current = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollYRef.current}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      if (scrollYRef.current && typeof window !== 'undefined') {
+        window.scrollTo(0, scrollYRef.current);
+      }
     }
+
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     };
   }, [selectedProject]);
 
@@ -124,7 +499,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="relative py-24 w-full z-10 overflow-hidden">
+    <section id="projects" className="relative py-24 w-full z-10 overflow-visible">
       {/* Background decorations */}
       <div className="absolute top-1/2 right-1/4 w-[500px] h-[500px] rounded-full bg-primary/[0.01] blur-[150px] pointer-events-none" />
 
@@ -149,8 +524,8 @@ export default function Projects() {
             >
               <ArrowLeft size={16} />
             </button>
-            <span className="font-mono text-xs text-muted mx-3 uppercase tracking-wider">
-              Page <span className="text-white font-bold">{currentPage}</span> of {totalPages}
+            <span className="font-mono text-[11px] uppercase tracking-[0.45em] text-white/60 mx-3 px-3 py-2 rounded-full border border-white/10 bg-white/5 shadow-[0_0_25px_rgba(255,255,255,0.06)]">
+              Page <span className="text-white font-bold mx-1">{currentPage}</span> of <span className="text-primary font-bold">{totalPages}</span>
             </span>
             <button
               onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
@@ -181,14 +556,24 @@ export default function Projects() {
             >
               {/* Project Image Mockup area */}
               <div className="relative h-48 bg-secondary border-b border-white/5 overflow-hidden flex items-center justify-center select-none">
-                <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]" />
-                
-                {/* Tech logo background flare */}
-                <div className="absolute w-32 h-32 rounded-full bg-primary/[0.03] group-hover:bg-primary/[0.07] blur-md transition-all duration-500" />
-                
-                <span className="font-outfit text-sm font-black tracking-[0.3em] text-white/30 group-hover:text-white/70 group-hover:scale-105 transition-all duration-500 font-bold">
-                  {project.imageText}
-                </span>
+                {project.image ? (
+                  <>
+                    <div
+                      className="absolute inset-0 bg-center bg-cover"
+                      style={{ backgroundImage: `url(${project.image})` }}
+                    />
+                    <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]" />
+                    <div className="absolute w-32 h-32 rounded-full bg-primary/[0.03] group-hover:bg-primary/[0.07] blur-md transition-all duration-500" />
+                  </>
+                ) : (
+                  <>
+                    <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]" />
+                    <div className="absolute w-32 h-32 rounded-full bg-primary/[0.03] group-hover:bg-primary/[0.07] blur-md transition-all duration-500" />
+                    <span className="font-outfit text-sm font-black tracking-[0.3em] text-white/30 group-hover:text-white/70 group-hover:scale-105 transition-all duration-500 font-bold">
+                      {project.imageText}
+                    </span>
+                  </>
+                )}
 
                 <div className="absolute top-3 left-4 font-mono text-[9px] text-muted tracking-widest">[ PROJECT_MOCKUP ]</div>
                 <Code className="absolute top-3 right-4 text-primary/40 group-hover:text-primary/80 transition-opacity" size={16} />
@@ -258,24 +643,28 @@ export default function Projects() {
       </div>
 
       {/* Full-Screen Details Modal overlay */}
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-secondary/80 backdrop-blur-md flex justify-center items-center p-4 sm:p-6"
-            onClick={() => setSelectedProject(null)}
-          >
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {selectedProject && (
             <motion.div
-              initial={{ scale: 0.95, y: 30, opacity: 0 }}
-              animate={{ scale: 1, y: 0, opacity: 1 }}
-              exit={{ scale: 0.95, y: 30, opacity: 0 }}
-              transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-              className="w-full max-w-4xl max-h-[85vh] bg-[#0c0c0c] border border-white/10 rounded-2xl overflow-y-auto no-scrollbar shadow-glow-lg flex flex-col"
-              onClick={(e) => e.stopPropagation()} // Stop closing on content click
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6"
+              onClick={() => setSelectedProject(null)}
             >
-              {/* Modal Header */}
+              <div className="absolute inset-0 bg-secondary/90 backdrop-blur-md" />
+              <motion.div
+                initial={{ scale: 0.95, y: 30, opacity: 0 }}
+                animate={{ scale: 1, y: 0, opacity: 1 }}
+                exit={{ scale: 0.95, y: 30, opacity: 0 }}
+                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                className="relative w-full max-w-4xl h-[90vh] max-h-[90vh] bg-[#0c0c0c] border border-white/10 rounded-2xl overflow-hidden shadow-glow-lg flex flex-col min-h-0"
+                onClick={(e) => e.stopPropagation()} // Stop closing on content click
+              >
+                <div className="absolute inset-0 pointer-events-none bg-black/30 rounded-2xl" />
+                <div className="relative flex flex-col max-h-[90vh] overflow-hidden min-h-0">
+                  {/* Modal Header */}
               <div className="sticky top-0 bg-[#0c0c0c]/90 backdrop-blur-md border-b border-white/5 p-6 flex justify-between items-center z-20">
                 <div>
                   <div className="flex items-center gap-2 text-primary font-mono text-xs uppercase tracking-widest mb-1.5">
@@ -295,15 +684,35 @@ export default function Projects() {
               </div>
 
               {/* Modal Body */}
-              <div className="p-6 sm:p-8 space-y-8 flex-1">
+              <div
+                className="p-6 sm:p-8 space-y-8 flex-1 min-h-0 overflow-y-auto"
+                style={{ WebkitOverflowScrolling: 'touch' }}
+                onWheel={(e) => e.stopPropagation()}
+              >
                 {/* Large visual illustration area */}
-                <div className="relative h-60 sm:h-72 bg-secondary border border-white/5 rounded-xl overflow-hidden flex items-center justify-center select-none">
+                <div className="relative h-60 sm:h-72 border border-white/5 rounded-xl overflow-hidden select-none">
+                  {selectedProject.image ? (
+                    <>
+                      <div
+                        className="absolute inset-0 bg-center bg-cover"
+                        style={{
+                          backgroundImage: `url(${selectedProject.image})`,
+                          backgroundPosition: 'center center',
+                          backgroundRepeat: 'no-repeat'
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-black/20" />
+                    </>
+                  ) : (
+                    <div className="absolute inset-0 bg-secondary flex items-center justify-center">
+                      <span className="font-outfit text-lg font-black tracking-[0.4em] text-white/40">
+                        {selectedProject.imageText}
+                      </span>
+                    </div>
+                  )}
+
                   <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]" />
                   <div className="absolute w-44 h-44 rounded-full bg-primary/5 blur-xl" />
-                  <span className="font-outfit text-lg font-black tracking-[0.4em] text-white/40">
-                    {selectedProject.imageText}
-                  </span>
-                  <div className="absolute bottom-3 left-4 font-mono text-[9px] text-muted tracking-widest">[ PROJECT_IMAGE_PLACEHOLDER ]</div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
@@ -412,10 +821,11 @@ export default function Projects() {
                   </div>
                 </div>
               </div>
+            </div>
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>, document.body)}
     </section>
   );
 }

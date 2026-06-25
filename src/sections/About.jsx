@@ -69,33 +69,28 @@ export default function About() {
               <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-r from-primary to-orange-600 opacity-20 blur group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
               
               {/* Photo Frame Container */}
-              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-darkGray-card border border-white/5 flex items-center justify-center">
-                
-                {/* SVG Developer Portrait Silhouette Silhouette / Tech Pattern */}
-                <div className="absolute inset-0 bg-grid-pattern opacity-10" />
                 <div className="relative w-full h-full rounded-2xl overflow-hidden bg-darkGray-card border border-white/5">
+                  {/* Background image layer for reliable rendering */}
+                  <div
+                    className="absolute inset-0 bg-center bg-cover"
+                    style={{ backgroundImage: `url('/mypic.jpeg')` }}
+                    aria-hidden="true"
+                  />
 
-  <img
-    src="/mypic.jpeg"
-    alt="Rubaiya Hamid"
-    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-  />
+                  {/* SVG Developer Portrait Silhouette / Tech Pattern */}
+                  <div className="absolute inset-0 bg-grid-pattern opacity-10" />
 
-  {/* Dark Gradient Overlay */}
-  <div className="absolute inset-0 bg-gradient-to-t from-secondary/70 via-transparent to-transparent" />
+                  {/* Dark Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary/70 via-transparent to-transparent" />
 
-  {/* Label */}
-  <div className="absolute bottom-4 left-4 z-30 font-mono text-[10px] tracking-widest text-white group-hover:text-primary transition-colors">
-    [ RUBAIYA HAMID ]
-  </div>
-</div>
+                  {/* Label */}
+                  <div className="absolute bottom-4 left-4 z-30 font-mono text-[10px] tracking-widest text-white group-hover:text-primary transition-colors">
+                    [ RUBAIYA HAMID ]
+                  </div>
 
-                {/* Glassy overlay frame */}
-                <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent opacity-60 z-20" />
-                
-                {/* Hover Reveal Card Label */}
-                
-              </div>
+                  {/* Glassy overlay frame */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent opacity-60 z-20" />
+                </div>
             </div>
           </motion.div>
 
